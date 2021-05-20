@@ -1,23 +1,38 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Main from "@/components/Main.vue";
+import ArticleList from "@/components/article/ArticleList.vue";
+import ArticleRegist from "@/components/article/ArticleRegist.vue";
+import ArticleDetail from "@/components/article/ArticleDetail.vue";
+import ArticleModify from "@/components/article/ArticleModify.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "Main",
+    component: Main,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/article/list",
+    name: "ArticleList",
+    component: ArticleList,
+  },
+  {
+    path: "/article/regist",
+    name: "ArticleRegist",
+    component: ArticleRegist,
+  },
+  {
+    path: "/article/list/:num",
+    name: "ArticleDetail",
+    component: ArticleDetail,
+  },
+  {
+    path: "/article/modify/:num",
+    name: "ArticleModify",
+    component: ArticleModify,
   },
 ];
 
