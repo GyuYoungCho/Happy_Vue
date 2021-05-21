@@ -6,12 +6,10 @@ Vue.use(Vuex);
 import apartStore from "@/store/modules/apartStore.js";
 import articleStore from "@/store/modules/articleStore.js";
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   modules: {
-    // 키: 값 형태로 저장됩니다.
-    apartStore: apartStore,
-    articleStore: articleStore,
+    namespaced: true,
+    apartStore,
+    articleStore,
   },
 });
-
-export default store;

@@ -11,7 +11,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import AptListItem from '@/components/apt/AptListItem.vue';
+import AptListItem from '@/components/apart/AptListItem.vue';
 
 export default {
   name: 'AptList',

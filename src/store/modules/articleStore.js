@@ -4,7 +4,7 @@ import rest from "@/js/httpCommon.js";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const articleStore = {
   state: {
     items: [],
     item: {},
@@ -56,4 +56,6 @@ export default new Vuex.Store({
     },
   },
   modules: {},
-});
+};
+
+export default articleStore;

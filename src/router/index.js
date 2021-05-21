@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Main from "@/components/Main.vue";
+import Main from "@/components/views/Main.vue";
+import AptView from "@/components/views/AptView.vue";
 import ArticleList from "@/components/article/ArticleList.vue";
 import ArticleRegist from "@/components/article/ArticleRegist.vue";
 import ArticleDetail from "@/components/article/ArticleDetail.vue";
@@ -40,6 +41,11 @@ const routes = [
     path: "/user/regist",
     name: "UserRegist",
     component: UserRegist,
+  },
+  {
+    path: "/apart/search",
+    name: "AptView",
+    component: AptView,
   },
 ];
 

@@ -1,6 +1,8 @@
 <template>
   <div>
+    <h1></h1>
     <ul>
+      
       <!-- <li><router-link to="./article/list">게시판</router-link></li>
       <li><router-link to="./article/regist">게시글 등록</router-link></li> -->
     </ul>
