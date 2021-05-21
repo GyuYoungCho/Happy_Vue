@@ -6,6 +6,8 @@ import ArticleRegist from "@/components/article/ArticleRegist.vue";
 import ArticleDetail from "@/components/article/ArticleDetail.vue";
 import ArticleModify from "@/components/article/ArticleModify.vue";
 
+import UserRegist from "@/components/user/Regist.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -33,6 +35,11 @@ const routes = [
     path: "/article/modify/:num",
     name: "ArticleModify",
     component: ArticleModify,
+  },
+  {
+    path: "/user/regist",
+    name: "UserRegist",
+    component: UserRegist,
   },
 ];
 

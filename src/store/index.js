@@ -1,59 +1,17 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import rest from "@/js/httpCommon.js";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
-    items: [],
-    item: {},
+import apartStore from "@/store/modules/apartStore.js";
+import articleStore from "@/store/modules/articleStore.js";
+
+const store = new Vuex.Store({
+  modules: {
+    // 키: 값 형태로 저장됩니다.
+    apartStore: apartStore,
+    articleStore: articleStore,
   },
-  getters: {
-    items(state) {
-      return state.items;
-    },
-    item(state) {
-      return state.item;
-    },
-  },
-  mutations: {
-    setItems(state, payload) {
-      state.items = payload;
-    },
-    setItem(state, payload) {
-      state.item = payload;
-    },
-  },
-  actions: {
-    setItems(store) {
-      rest
-        .axios({
-          method: "get",
-          url: "/article",
-        })
-        .then((res) => {
-          store.commit("setItems", res.data);
-        })
-        .catch((err) => {
-          alert("게시판 로딩 실패");
-          console.log(err);
-        });
-    },
-    setItem(store, num) {
-      rest
-        .axios({
-          method: "get",
-          url: "/article/" + num,
-        })
-        .then((res) => {
-          store.commit("setItem", res.data);
-        })
-        .catch((err) => {
-          alert("상세화면 로딩 실패");
-          console.log(err);
-        });
-    },
-  },
-  modules: {},
 });
+
+export default store;

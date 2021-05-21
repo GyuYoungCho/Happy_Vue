@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="m-5">
         <b-table @row-clicked="detail" striped hover :items="items">
         </b-table>
     </div>

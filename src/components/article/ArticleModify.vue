@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="m-5">
         <b-form>
             <b-form-group label="이름:" label-for="name">
                 <b-form-input id="name" type="text" placeholder="name" required v-model="item.name"></b-form-input>
