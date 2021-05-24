@@ -43,8 +43,9 @@ export default {
         },
         onSubmit() {
             if(!this.currentUser) return;
-            console.log(storage.getItem('loginUser'))
-            this.item.name = "jo"
+            let user = JSON.parse(storage.getItem('loginUser'))
+            this.item.name = user.name
+            
             rest.axios({
                 url: "/article",
                 method: "post",

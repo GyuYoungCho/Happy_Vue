@@ -1,7 +1,17 @@
 <template>
     <div class="m-5">
-        <b-table @row-clicked="detail" striped hover :items="items">
+        <b-table id = "my-table" @row-clicked="detail" 
+        striped hover :items="items"
+        :per-page="perPage"
+      :current-page="currentPage">
         </b-table>
+
+        <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+    ></b-pagination>
     </div>
 </template>
 <style scoped>
@@ -11,10 +21,16 @@
 import { mapGetters } from 'vuex';
 export default {
     data() {
-        return {};
+        return {
+            perPage: 3,
+            currentPage: 1,
+        };
     },
     computed: {
         ...mapGetters(["items"]),
+        rows() {
+            return this.items.length
+        }
     },
     created() {
         this.$store.dispatch("setItems");
