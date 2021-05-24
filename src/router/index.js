@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Main from "@/components/views/Main.vue";
 import AptView from "@/components/views/AptView.vue";
-import ArticleList from "@/components/article/ArticleList.vue";
+import ArticleList from "@/components/views/ArticleList.vue";
 import ArticleRegist from "@/components/article/ArticleRegist.vue";
 import ArticleDetail from "@/components/article/ArticleDetail.vue";
 import ArticleModify from "@/components/article/ArticleModify.vue";
