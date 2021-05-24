@@ -22,8 +22,8 @@
                         </b-form-group>
 
                         <div class="text-center m-3">
-                            <b-button @click="signup" variant="outline-primary">정보 수정</b-button>
-                            <b-button @click="moveMain" variant="outline-danger">회원 탈퇴</b-button>
+                            <b-button @click="modify" variant="outline-primary">정보 수정</b-button>
+                            <b-button @click="withdraw(user.id)" variant="outline-danger">회원 탈퇴</b-button>
                         </div>
                     </b-form>
                 </div>
@@ -36,6 +36,7 @@
 </style>
 <script>
 const storage = window.sessionStorage;
+import rest from "@/js/httpCommon.js";
 export default {
     created() {
         this.user = JSON.parse(storage.getItem("loginUser"));
@@ -45,5 +46,30 @@ export default {
             user: {},
         };
     },
+    methods: {
+        modify() {
+            this.$router.push({
+                path: "/user/modify/"+this.user.id,
+            })
+        },
+        withdraw(id) {
+            rest.axios({
+                url: "/user/" + id,
+                method: "delete",
+            }).then((res) => {
+                if (res.data === "success") {
+                    storage.removeItem("jwt-auth-token");
+                    storage.removeItem("loginUser");
+                    alert("유저 삭제 성공");
+                    this.$router.push({
+                        path: "/",
+                    });
+                }
+            }).catch((err)=>{
+                alert("유저 삭제 실패")
+                console.log(err);
+            });
+        }
+    }
 }
 </script>
