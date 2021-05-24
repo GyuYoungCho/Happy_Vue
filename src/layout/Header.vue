@@ -4,12 +4,10 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
+      <b-navbar-nav v-if="currentUser">
         <b-nav-item href="/article/list">게시판</b-nav-item>
         <b-nav-item href="/article/regist">글 작성</b-nav-item>
-      </b-navbar-nav>
-      <b-navbar-nav>
-        <b-nav-item href="/apart/search">매매 검색</b-nav-item>
+         <b-nav-item href="/apart/search">매매 검색</b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav v-if="!currentUser" class="ml-auto">
