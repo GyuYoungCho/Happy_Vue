@@ -6,14 +6,6 @@
     @mouseout="colorChange(false)"
     :class="{ 'mouse-over-bgcolor': isColor }"
   >
-    
-    <!-- <b-col cols="10">
-      
-      {{ this.apt.아파트 }}
-      <h6>거래금액 : {{this.apt.거래금액}}</h6>
-      <h6>면적 : {{this.apt.면적}}</h6>
-      <p>{{this.apt.년}}.{{this.apt.월}}.{{this.apt.일}}</p>
-    </b-col> -->
     <b-media>
     <b-media-body>
             <h4 style="color:blue">{{this.apt.aptName}}</h4>

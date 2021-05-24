@@ -8,6 +8,7 @@
     <b-row>
       <b-col cols="3" align="left">
         <interest-region-list />
+        <b-button></b-button>
       </b-col>
       <b-col cols="9">
         <maps></maps>
@@ -22,8 +23,7 @@ import Maps from '@/components/apart/Maps.vue';
 export default {
   components: {
     InterestRegionList,
-    Maps
-    
+    Maps,
   },
 }
 </script>

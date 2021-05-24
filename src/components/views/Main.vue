@@ -10,7 +10,7 @@
       img-width="1024"
       img-height="120"
       style="text-shadow: 1px 1px 2px #333;"
-      height="100"
+      
     >
       <!-- Text slides with image -->
       <b-carousel-slide
