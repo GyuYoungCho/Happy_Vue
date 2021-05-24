@@ -11,23 +11,24 @@
       </b-col>
       <b-col cols="9">
         <apt-search-bar />
-        <map-view></map-view>
+        <maps></maps>
       </b-col>
     </b-row>
   </b-container>
 </template>
+<script src="@/js/vue-google-maps.js"></script>
 
 <script>
 import AptSearchBar from '@/components/apart/AptSearchBar.vue';
 import AptList from '@/components/apart/AptList.vue';
-import MapView from '@/components/apart/MapView.vue';
+import Maps from '@/components/apart/Maps.vue';
 
 export default {
   name: 'Apt',
   components: {
     AptSearchBar,
     AptList,
-    MapView,
+    Maps,
   },
   data() {
     return {};
