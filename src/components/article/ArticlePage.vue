@@ -7,13 +7,13 @@
       aria-controls="my-table"
     ></b-pagination>
 
-    <b-table
+    <!-- <b-table
       id="my-table"
       :items="items"
       :per-page="perPage"
       :current-page="currentPage"
       small
-    ></b-table>
+    ></b-table> -->
   </div>
 </template>
 
@@ -22,7 +22,9 @@ import {mapGetters} from 'vuex';
 export default {
   data() {
     return{
-      len : 0,
+      
+      perPage: 3,
+      currentPage: 1,
     }
   },
   computed : {

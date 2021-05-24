@@ -1,9 +1,6 @@
 <template>
     <div class="m-5">
         <b-form>
-            <b-form-group label="이름:" label-for="name">
-                <b-form-input id="name" type="text" placeholder="name" required v-model="item.name"></b-form-input>
-            </b-form-group>
 
             <b-form-group label="제목:" label-for="title">
                 <b-form-input id="title" type="text" placeholder="title" required v-model="item.title"></b-form-input>
@@ -24,11 +21,20 @@
 </style>
 <script>
 import rest from "@/js/httpCommon.js";
+const storage = window.sessionStorage;
 export default {
     data() {
         return {item: {}};
     },
-
+    computed: {
+        currentUser() {
+            if (!storage.getItem('loginUser')){
+                return false;
+            } else {
+                return true;
+            }
+        }
+    },
     methods: {
         moveList() {
             this.$router.push({
@@ -36,6 +42,9 @@ export default {
             })
         },
         onSubmit() {
+            if(!this.currentUser) return;
+            console.log(storage.getItem('loginUser'))
+            this.item.name = "jo"
             rest.axios({
                 url: "/article",
                 method: "post",
