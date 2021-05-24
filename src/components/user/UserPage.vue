@@ -17,6 +17,9 @@
                         <b-form-group id="address" label="주소" label-for="address">
                             <b-form-input id="address" :value="user.address" type="text" readonly></b-form-input>
                         </b-form-group>
+                        <b-form-group id="gender" label="성별" label-for="gender">
+                            <b-form-input id="gender" :value="user.gender" type="text" readonly></b-form-input>
+                        </b-form-group>
                         <b-form-group id="phone" label="전화번호" label-for="phone">
                             <b-form-input id="phone" :value="user.phone" type="text" readonly></b-form-input>
                         </b-form-group>

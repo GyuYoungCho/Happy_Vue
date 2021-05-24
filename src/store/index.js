@@ -6,16 +6,14 @@ Vue.use(Vuex);
 
 import apartStore from "@/store/modules/apartStore.js";
 import articleStore from "@/store/modules/articleStore.js";
-// import mypageStore from "@/store/modules/mypageStore.js";
-// import auth from "@/store/modules/auth.js";
+import adminStore from "@/store/modules/adminStore.js";
 
 export default new Vuex.Store({
   modules: {
     namespaced: true,
     apartStore,
     articleStore,
-    // mypageStore,
-    // auth,
+    adminStore,
   },
   plugins: [createPersistedState()],
 });

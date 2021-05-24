@@ -33,6 +33,7 @@ const articleStore = {
           url: "/article",
         })
         .then((res) => {
+          console.log(res.data);
           store.commit("setItems", res.data);
         })
         .catch((err) => {

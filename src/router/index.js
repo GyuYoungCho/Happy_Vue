@@ -15,6 +15,8 @@ import UserModify from "@/components/user/UserModify.vue";
 import InterestList from "@/components/views/InterestList.vue";
 import InterestRegister from "@/components/interest/InterestRegister.vue";
 
+import AdminPage from "@/components/admin/AdminPage.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -22,9 +24,6 @@ const routes = [
     path: "/",
     name: "Main",
     component: Main,
-    meta: {
-      auth: false,
-    },
   },
   {
     path: "/article/list",
@@ -75,6 +74,11 @@ const routes = [
     path: "/interest/parkinglist",
     name: "InterestList",
     component: InterestList,
+  },
+  {
+    path: "/admin/adminpage",
+    name: "AdminPage",
+    component: AdminPage,
   },
 ];
 

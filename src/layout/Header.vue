@@ -7,7 +7,7 @@
       <b-navbar-nav v-if="currentUser">
         <b-nav-item href="/article/list">게시판</b-nav-item>
         <b-nav-item href="/article/regist">글 작성</b-nav-item>
-         <b-nav-item href="/apart/search">매매 검색</b-nav-item>
+        <b-nav-item href="/apart/search">매매 검색</b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav v-if="!currentUser" class="ml-auto">
@@ -17,7 +17,8 @@
         <!-- <b-nav-item @click="myPage">My page</b-nav-item> -->
       <b-navbar-nav v-if="currentUser" class="ml-auto">
         <b-nav-item @click="logout">로그아웃</b-nav-item>
-        <b-nav-item @click="myPage">마이페이지</b-nav-item>
+        <b-nav-item @click="myPage" v-if="!currentAdmin">마이페이지</b-nav-item>
+        <b-nav-item @click="adminPage" v-if="currentAdmin">관리자페이지</b-nav-item>
       </b-navbar-nav>
       <b-modal id="loginModal" title="Login" hide-footer>
         <form>
@@ -55,6 +56,13 @@ export default {
       } else {
         return true;
       }
+    },
+    currentAdmin() {
+      if (JSON.parse(storage.getItem("loginUser")).id=="admin") {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
 
@@ -77,6 +85,7 @@ export default {
         console.dir(res.headers["jwt-auth-token"]);
         storage.setItem("jwt-auth-token", res.headers["jwt-auth-token"]);
         storage.setItem("loginUser", JSON.stringify(res.data.data));
+        this.user = JSON.parse(storage.getItem("loginUser"));
         alert("로그인 성공");
       }).catch((err) => {
         alert("로그인 실패");
@@ -101,6 +110,11 @@ export default {
     myPage() {
       this.$router.push({
         path: "/user/mypage",
+      })
+    },
+    adminPage() {
+      this.$router.push({
+        path: "/admin/adminpage",
       })
     }
   },

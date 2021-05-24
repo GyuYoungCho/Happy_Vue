@@ -1,22 +1,29 @@
 <template>
     <div class="m-5">
-        <b-table id = "my-table" @row-clicked="detail" 
-        striped hover :items="items"
-        :per-page="perPage"
-      :current-page="currentPage">
+        <b-table id="my-table" @row-clicked="detail" 
+            striped hover :items="items"
+            :per-page="perPage"
+            :current-page="currentPage">
         </b-table>
-
-        <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="my-table"
-    ></b-pagination>
+        
+        <div>
+            <b-pagination
+                v-model="currentPage"
+                :total-rows="rows"
+                :per-page="perPage"
+                aria-controls="my-table">
+            </b-pagination>
+        </div>
     </div>
 </template>
-<style scoped>
 
+<style scoped>
+    .b-pagination {
+        display: flex;
+        justify-content: center;
+    }
 </style>
+
 <script>
 import { mapGetters } from 'vuex';
 export default {

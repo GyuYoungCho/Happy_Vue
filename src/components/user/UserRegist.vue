@@ -20,6 +20,14 @@
                         <b-form-group id="address" label="주소" label-for="address">
                             <b-form-input id="address" v-model="user.address" type="text" placeholder="Enter your Address" required></b-form-input>
                         </b-form-group>
+                        <b-form-group label="성별" v-slot="{ gender }">
+                            <b-form-radio-group
+                                v-model="user.gender"
+                                :options="options"
+                                :aria-describedby="gender"
+                                name="gender">
+                            </b-form-radio-group>
+                        </b-form-group>
                         <b-form-group id="phone" label="전화번호" label-for="phone">
                             <b-form-input id="phone" v-model="user.phone" type="text" placeholder="010-xxxx-xxxx" required></b-form-input>
                         </b-form-group>
@@ -41,7 +49,12 @@
 import rest from "@/js/httpCommon.js";
 export default {
     data() {
-        return {user: {}};
+        return {
+            user: {},
+            options: [
+                { text: '남성', value: '남' },
+                { text: '여성', value: '여' },
+            ]};
     },
     methods: {
         moveMain() {
