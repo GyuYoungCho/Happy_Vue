@@ -2,13 +2,13 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Main from "@/components/views/Main.vue";
 import AptView from "@/components/views/AptView.vue";
-import ArticleList from "@/components/views/ArticleList.vue";
+import ArticleList from "@/components/article/ArticleList.vue";
 import ArticleRegist from "@/components/article/ArticleRegist.vue";
 import ArticleDetail from "@/components/article/ArticleDetail.vue";
 import ArticleModify from "@/components/article/ArticleModify.vue";
 
-import UserRegist from "@/components/user/Regist.vue";
-import UserPage from "@/components/user/Mypage.vue";
+import UserRegist from "@/components/user/UserRegist.vue";
+import UserPage from "@/components/user/UserPage.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -16,6 +16,9 @@ const routes = [
     path: "/",
     name: "Main",
     component: Main,
+    meta: {
+      auth: false,
+    },
   },
   {
     path: "/article/list",
@@ -43,14 +46,14 @@ const routes = [
     component: UserRegist,
   },
   {
-    path: "/apart/search",
-    name: "AptView",
-    component: AptView,
-  },
-  {
     path: "/user/mypage",
     name: "UserPage",
     component: UserPage,
+  },
+  {
+    path: "/apart/search",
+    name: "AptView",
+    component: AptView,
   },
 ];
 

@@ -23,18 +23,14 @@
       </b-navbar-nav>
       <b-modal id="loginModal" title="Login" hide-footer>
         <form>
-          <!-- Modal body -->
           <div class="modal-body">
-          <label for="id">ID:</label>
-          <input type="text" name="id" class="form-control" id="id" v-model="user.id" required placeholder="ID" />
-          <label for="pass">Password:</label>
-          <input type="password" name="pass" class="form-control" id="pass" v-model="user.pass" required placeholder="Enter Password" />
-          </div>
-
-          <!-- Modal footer -->
-          <div class="modal-footer">
-          <b-button @click="login" class="btn btn-primary" >Login</b-button>
-          <b-button type="button" class="btn btn-danger" @click="$emit('close')">Close</b-button>
+            <label for="id">ID:</label>
+            <input type="text" name="id" class="form-control" id="id" v-model="user.id" required placeholder="ID" />
+            <label for="pass">Password:</label>
+            <input type="password" name="pass" class="form-control" id="pass" v-model="user.pass" required placeholder="Enter Password" />
+            <div class="text-right">
+              <b-button type="submit" @click="login" class="btn btn-primary mt-3">Login</b-button>
+            </div>
           </div>
         </form>
       </b-modal>
@@ -51,7 +47,8 @@ export default {
   data() {
     return {
       user: {},
-      };
+      message: ""
+    };
   },
   computed: {
     currentUser() {
@@ -78,10 +75,10 @@ export default {
         method: "post",
         data: this.user,
       }).then((res) => {
-        console.log(res.data.data);
+        console.log(JSON.stringify(res.data.data));
         console.dir(res.headers["jwt-auth-token"]);
         storage.setItem("jwt-auth-token", res.headers["jwt-auth-token"]);
-        storage.setItem("loginUser", res.data.data);
+        storage.setItem("loginUser", JSON.stringify(res.data.data));
         alert("로그인 성공");
       }).catch((err) => {
         alert("로그인 실패");
