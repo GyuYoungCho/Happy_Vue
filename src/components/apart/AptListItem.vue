@@ -16,13 +16,14 @@
     </b-col> -->
     <b-media>
     <b-media-body>
-            <h4><a href="moveMap(this.apt.lag,this.apt.lng)">{{this.apt.aptName}}</a></h4>
+            <h4 style="color:blue">{{this.apt.aptName}}</h4>
             <h6>거래금액 :{{this.apt.dealAmount}}</h6>
             <h6>면적: {{this.apt.area}}</h6>
             <p>
-              <i></i>${this.apt.dealDate}</p>
+              <i></i>{{this.apt.dealDate}}</p>
     </b-media-body>
       </b-media>
+      <hr>
   </b-row>
 </template>
 
