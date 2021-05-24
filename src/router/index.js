@@ -12,6 +12,9 @@ import UserRegist from "@/components/user/UserRegist.vue";
 import UserPage from "@/components/user/UserPage.vue";
 import UserModify from "@/components/user/UserModify.vue";
 
+import InterestList from "@/components/views/InterestList.vue";
+import InterestRegister from "@/components/interest/InterestRegister.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -62,6 +65,16 @@ const routes = [
     path: "/apart/search",
     name: "AptView",
     component: AptView,
+  },
+  {
+    path: "/interest/add",
+    name: "InterestRegister",
+    component: InterestRegister,
+  },
+  {
+    path: "/interest/parkinglist",
+    name: "InterestList",
+    component: InterestList,
   },
 ];
 
