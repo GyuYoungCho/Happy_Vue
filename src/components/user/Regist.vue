@@ -18,7 +18,7 @@
                             <b-form-input id="email" v-model="user.email" type="email" placeholder="Enter your Email" required></b-form-input>
                         </b-form-group>
                         <b-form-group id="address" label="주소" label-for="address">
-                            <b-form-input id="address" v-model="user.address" type="address" placeholder="Enter your Address" required></b-form-input>
+                            <b-form-input id="address" v-model="user.address" type="text" placeholder="Enter your Address" required></b-form-input>
                         </b-form-group>
                         <b-form-group id="phone" label="전화번호" label-for="phone">
                             <b-form-input id="phone" v-model="user.phone" type="text" placeholder="010-xxxx-xxxx" required></b-form-input>
