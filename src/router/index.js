@@ -8,7 +8,7 @@ import ArticleDetail from "@/components/article/ArticleDetail.vue";
 import ArticleModify from "@/components/article/ArticleModify.vue";
 
 import UserRegist from "@/components/user/Regist.vue";
-
+import UserPage from "@/components/user/Mypage.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -46,6 +46,11 @@ const routes = [
     path: "/apart/search",
     name: "AptView",
     component: AptView,
+  },
+  {
+    path: "/user/mypage",
+    name: "UserPage",
+    component: UserPage,
   },
 ];
 
