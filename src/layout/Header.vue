@@ -5,8 +5,7 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav v-if="currentUser">
-        <b-nav-item href="/article/list">게시판</b-nav-item>
-        <b-nav-item href="/article/regist">글 작성</b-nav-item>
+        <b-nav-item href="/article/list">공지사항</b-nav-item>
         <b-nav-item href="/apart/search">매매 검색</b-nav-item>
         <b-nav-item href="/interest/add">관심 지역 등록</b-nav-item>
       </b-navbar-nav>
@@ -47,7 +46,6 @@ export default {
   data() {
     return {
       user: {},
-      message: ""
     };
   },
   computed: {
