@@ -9,6 +9,11 @@
         <b-nav-item href="/apart/search">매매 검색</b-nav-item>
         <b-nav-item href="/interest/add">관심 지역 등록</b-nav-item>
       </b-navbar-nav>
+
+      <b-navbar-nav class="ml-auto">
+        <today-view></today-view>
+      </b-navbar-nav>
+
       <!-- Right aligned nav items -->
       <b-navbar-nav v-if="!currentUser" class="ml-auto">
         <b-nav-item href="/user/regist">회원 가입</b-nav-item>
@@ -20,6 +25,7 @@
         <b-nav-item @click="myPage" v-if="!currentAdmin">마이페이지</b-nav-item>
         <b-nav-item @click="adminPage" v-if="currentAdmin">관리자페이지</b-nav-item>
       </b-navbar-nav>
+
       <b-modal id="loginModal" title="Login" hide-footer>
         <form>
           <div class="modal-body">
@@ -39,10 +45,12 @@
 
 <script>
 import rest from "@/js/httpCommon.js";
+import TodayView from './TodayView.vue';
 
 const storage = window.sessionStorage;
 
 export default {
+  components: { TodayView },
   data() {
     return {
       user: {},

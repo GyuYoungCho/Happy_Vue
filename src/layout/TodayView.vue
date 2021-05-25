@@ -1,8 +1,10 @@
 <template>
-  <div id="clock">
-    <i class="far fa-clock"></i> {{ date }}
+  <div id="clock" style="color:white">
+    <center>
+     {{ date }}
     <br />
-    <v-icon small>mdi-clock-outline</v-icon> {{ time }}
+     {{ time }}
+    </center>
   </div>
 </template>
  

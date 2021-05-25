@@ -1,12 +1,13 @@
 <template>
-  <today-view></today-view>
+  <qna-search-bar></qna-search-bar>
 </template>
 
 <script>
-import TodayView from "../QnA/TodayView.vue";
+import QnaSearchBar from "@/components/QnA/QnaSearchBar.vue";
+
 export default {
   components : {
-    TodayView 
+    QnaSearchBar,
   }
 }
 </script>
