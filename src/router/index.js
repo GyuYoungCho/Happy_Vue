@@ -12,6 +12,7 @@ import UserRegist from "@/components/user/UserRegist.vue";
 import UserPage from "@/components/user/UserPage.vue";
 import UserModify from "@/components/user/UserModify.vue";
 
+import QnaView from "@/components/views/QnaView.vue";
 import InterestList from "@/components/views/InterestList.vue";
 import InterestRegister from "@/components/interest/InterestRegister.vue";
 
@@ -79,6 +80,11 @@ const routes = [
     path: "/admin/adminpage",
     name: "AdminPage",
     component: AdminPage,
+  },
+  {
+    path: "/qna/list",
+    name: "QnaView",
+    component: QnaView,
   },
 ];
 
