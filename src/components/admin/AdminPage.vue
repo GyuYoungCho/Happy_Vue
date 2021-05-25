@@ -1,63 +1,93 @@
-<template>
-  <section class="container">
-    <div class="columns">
-      <div class="column">
-        <h3>Line Chart</h3>
-        <line-chart></line-chart>
-      </div>
-      <div class="column">
-        <h3>Bar Chart</h3>
-        <bar-chart></bar-chart>
-      </div>
-      <div class="column">
-        <h3>User 목록</h3>
-        <Users></Users>
-      </div>
-    </div>
-  </section>
+P<template>
+  <div id="admin">
+    <h3 class="m-5">가입자 추이</h3>
+    <line-chart :label="joindate" :chart-data="totalUser"></line-chart>
+    <h3 class="m-5">사용자 통계 분석</h3>
+    <pie-chart :label="gender" :chart-data="genderCnt"></pie-chart>
+    <bar-chart :label="region" :chart-data="regionCnt"></bar-chart>
+    <Users />
+  </div>
 </template>
-<script>
-  import LineChart from '@/components/charts/LineChart'
-  import BarChart from '@/components/charts/BarChart'
-  import Users from '@/components/admin/Users.vue'
 
-  export default {
-    name: 'VueChartJS',
-    components: {
-      LineChart,
-      BarChart,
-      Users,
-    },
-    data() {
-      return {
-        datacollection: null // instantiating datacollection with null
+<script>
+import LineChart from "./LineChart";
+import PieChart from "./PieChart";
+import BarChart from "./BarChart";
+import Users from "./Users";
+import rest from "@/js/httpCommon.js";
+
+export default {
+  name: "Admin",
+  components: {
+    LineChart,
+    PieChart,
+    BarChart,
+    Users,
+  },
+  data() {
+    return {
+        joindate : 
+        ["January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",],
+        totalUser : [],
+        gender: ['man', 'woman'],
+        genderCnt: [],
+        region: [],
+        regionCnt: [],
+    };
+  },
+  async created() {
+    const { regiondata } = await rest.axios.get("/interest");
+    const { data } = await rest.axios.get("/user/admin");
+    
+    let man = 0;
+    let woman = 0;
+    let month = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+    console.log(regiondata);
+    for (let i=0; i<data.length; i++) {
+      let date = data[i].joindate.substr(3,2);
+      switch(+date) {
+        case 1: month[1]++; break;
+        case 2: month[2]++; break;
+        case 3: month[3]++; break;
+        case 4: month[4]++; break;
+        case 5: month[5]++; break;
+        case 6: month[6]++; break;
+        case 7: month[7]++; break;
+        case 8: month[8]++; break;
+        case 9: month[9]++; break;
+        case 10: month[10]++; break;
+        case 11: month[11]++; break;
+        case 12: month[12]++; break;
       }
-    },
-    created() {
-      this.fillData() //anytime the vue instance is created, call the fillData() function.
-    },
-    methods: {
-      fillData() {
-        this.datacollection = {
-          // Data for the y-axis of the chart
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
-          'September', 'October', 'November', 'December'],
-          datasets: [
-            {
-              label: 'Data One',
-              backgroundColor: '#f87979',
-              // Data for the x-axis of the chart
-              data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), 
-              this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), 
-              this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-            }
-          ]
-        }
-      },
-      getRandomInt() {
-        // JS function to generate numbers to be used for the chart
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      
+      if (data[i].gender=='남') {
+        man++;
+      } else {
+        woman++;
       }
     }
-  }
+    for (let i=1; i<=12; i++) {
+      this.totalUser.push(month[i]);
+    }
+    this.genderCnt.push(man);
+    this.genderCnt.push(woman);
+    
+    console.log(this.totalUser);
+    console.log(man + ":" + woman);
+  },
+};
 </script>
+
+<style>
+</style>

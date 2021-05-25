@@ -26,7 +26,6 @@ const adminStore = {
           url: "/user/admin",
         })
         .then((res) => {
-          console.log(res.data);
           store.commit("setTotalUsers", res.data);
         })
         .catch((err) => {

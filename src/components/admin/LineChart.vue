@@ -1,27 +1,28 @@
 <template>
-  <canvas ref="myChart" height="100px"></canvas>
+  <canvas class="m-5" ref="myChart" width="900px" height="250px"></canvas>
 </template>
 
 <script>
 import Chart from 'chart.js';
 export default {
   props: {
-    label:  {
+    label: {
       type: Array
     },
-    chartData:  {
+    chartData: {
       type: Array
-    }
+    },
   },
   async mounted() {
     await new Chart(this.$refs.myChart, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: this.label,
         datasets: [
         {
-            label: '관심 지역',
-            backgroundColor: 'rgba(144,238,144 , 0.9 )',
+            label: '가입자',
+            borderColor: 'rgba(245, 229, 27, 1)',
+            backgroundColor: 'rgba(255, 236, 139,0.2)',
             data: this.chartData,
         }
         ]

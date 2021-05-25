@@ -30,5 +30,6 @@ body {
 
 #app {
   font-family: "Nanum Gothic","Karla", sans-serif;
+  color: #2c3e50;
 }
 </style>
