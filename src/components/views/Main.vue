@@ -76,6 +76,7 @@
         </b-col>
         <b-col>
           <maps></maps>
+          <apt-get></apt-get>
         </b-col>
       </b-row>
     </b-container>
@@ -84,11 +85,13 @@
 
 <script>
 import ArticleItems from "../article/ArticleItems.vue";
+import AptGet from "../apart/Aptget.vue";
 import Maps from "../apart/Maps.vue";
 export default{
   name: "Main",
   components: {
     ArticleItems,
+    AptGet,
     Maps,
   },
 };
