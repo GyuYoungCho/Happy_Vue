@@ -11,6 +11,7 @@ const interestStore = {
     parkings: [],
     region: Object,
     regionlist: [],
+    totalInterest: [],
   },
   getters: {
     region(state) {
@@ -22,6 +23,9 @@ const interestStore = {
     parkings(state) {
       return state.parkings;
     },
+    totalInterest(state) {
+      return state.totalInterest;
+    },
   },
   mutations: {
     GET_REGION_LIST(state, regionlist) {
@@ -32,6 +36,9 @@ const interestStore = {
     },
     SELECT_REGION(state, region) {
       state.region = region;
+    },
+    setTotalInterest(state, payload) {
+      state.totalInterest = payload;
     },
   },
   actions: {
@@ -74,6 +81,20 @@ const interestStore = {
       });
 
       commit("GET_PARKING_LIST", datas);
+    },
+    setTotalInterest(store) {
+      rest
+        .axios({
+          method: "get",
+          url: "/interest",
+        })
+        .then((res) => {
+          store.commit("setTotalInterest", res.data);
+        })
+        .catch((err) => {
+          alert("유저 전체 관심 지역 로딩 실패");
+          console.log(err);
+        });
     },
   },
   modules: {},

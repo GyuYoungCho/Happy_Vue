@@ -1,5 +1,9 @@
 <template>
-  <canvas ref="pieChart" width="900px" height="250px"></canvas>
+  <b-container>
+    <b-row class="mt-2 mb-2">
+      <canvas class="m-3" ref="pieChart" width="900px" height="250px"></canvas>
+    </b-row>
+  </b-container>
 </template>
 
 <script>

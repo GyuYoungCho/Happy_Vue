@@ -1,6 +1,6 @@
 <template>
   <div class="m-5">
-    <h3>User</h3>
+    <h3>User Information</h3>
     <b-table hover :items="totalUsers"
       :per-page="perPage"
       :current-page="currentPage">

@@ -1,61 +1,94 @@
-P<template>
-  <div id="admin">
-    <h3 class="m-5">가입자 추이</h3>
-    <line-chart :label="joindate" :chart-data="totalUser"></line-chart>
-    <h3 class="m-5">사용자 통계 분석</h3>
-    <pie-chart :label="gender" :chart-data="genderCnt"></pie-chart>
-    <bar-chart :label="region" :chart-data="regionCnt"></bar-chart>
+<template>
+  <div id="admin" class="m-5">
+    <carousel :per-page="1" :mouse-drag="true">
+      <slide style="width:100px">
+        <h4 class="text-center">가입자 추이</h4>
+        <sign-up-chart :label="joindate" :chart-data="totalUser"></sign-up-chart>
+      </slide>
+      <slide style="width:100px">
+        <h4 class="text-center">사용자 통계: 성별</h4>
+        <gender-chart :label="gender" :chart-data="genderCnt"></gender-chart>
+      </slide>
+      <slide style="width:100px">
+        <h4 class="text-center">사용자 통계: 사는 지역</h4>
+        <region-chart :label="region" :chart-data="regionCnt"></region-chart>
+      </slide>
+      <slide style="width:100px">
+        <h4 class="text-center">사용자 통계: 관심 지역</h4>
+        <interest-chart :label="interest" :chart-data="interestCnt"></interest-chart>
+      </slide>
+    </carousel>
     <Users />
   </div>
 </template>
 
 <script>
-import LineChart from "./LineChart";
-import PieChart from "./PieChart";
-import BarChart from "./BarChart";
+import { Carousel, Slide } from 'vue-carousel';
+import SignUpChart from "./SignUpChart";
+import GenderChart from "./GenderChart";
+import RegionChart from "./RegionChart";
+import InterestChart from "./InterestChart";
 import Users from "./Users";
-import rest from "@/js/httpCommon.js";
+
+import { mapGetters } from 'vuex';
 
 export default {
   name: "Admin",
   components: {
-    LineChart,
-    PieChart,
-    BarChart,
+    Carousel,
+    Slide,
+    SignUpChart,
+    GenderChart,
+    RegionChart,
+    InterestChart,
     Users,
   },
   data() {
     return {
-        joindate : 
-        ["January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",],
-        totalUser : [],
-        gender: ['man', 'woman'],
-        genderCnt: [],
-        region: [],
-        regionCnt: [],
+      charts: [
+        '<div class="slide">asdf</div>',
+        '<div class="slide">Slide 2</div>',
+        '<div class="slide">Slide 3</div>',
+      ],
+      joindate : 
+      ["January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",],
+      totalUser : [],
+      gender: ['man', 'woman'],
+      genderCnt: [],
+      region: [],
+      regionCnt: [],
+      interest: [],
+      interestCnt: [],
     };
   },
+  computed: {
+      ...mapGetters(["totalUsers", "totalInterest"]),
+  },
   async created() {
-    const { regiondata } = await rest.axios.get("/interest");
-    const { data } = await rest.axios.get("/user/admin");
-    
+    // const {data} = await rest.axios.get("/user/admin");
+    this.$store.dispatch("setTotalUsers");
+    this.$store.dispatch("setTotalInterest");
     let man = 0;
     let woman = 0;
     let month = [0,0,0,0,0,0,0,0,0,0,0,0,0];
-    console.log(regiondata);
-    for (let i=0; i<data.length; i++) {
-      let date = data[i].joindate.substr(3,2);
+    let userData = this.totalUsers;
+    let regArr = new Array();
+    let interestData = this.totalInterest;
+    let interestArr = new Array();
+
+    for (let i=0; i<userData.length; i++) {
+      let date = userData[i].joindate.substr(3,2);
       switch(+date) {
         case 1: month[1]++; break;
         case 2: month[2]++; break;
@@ -71,23 +104,48 @@ export default {
         case 12: month[12]++; break;
       }
       
-      if (data[i].gender=='남') {
+      if (userData[i].gender=='남') {
         man++;
       } else {
         woman++;
       }
+      
+      regArr.push(userData[i].address);
     }
     for (let i=1; i<=12; i++) {
       this.totalUser.push(month[i]);
     }
+
+    let RegCnt = regArr.reduce((accu,curr)=> {
+      accu.set(curr, (accu.get(curr)||0) + 1);
+      return accu;
+    }, new Map());
+
+    for (let [key, value] of RegCnt.entries()) {
+      this.region.push(key);
+      this.regionCnt.push(value);
+    }
+    
     this.genderCnt.push(man);
     this.genderCnt.push(woman);
-    
-    console.log(this.totalUser);
-    console.log(man + ":" + woman);
+
+    for (let i=0; i<interestData.length; i++) {
+      interestArr.push(interestData[i].gu);
+    }
+
+    let interestCnt = interestArr.reduce((accu,curr)=> {
+      accu.set(curr, (accu.get(curr)||0) + 1);
+      return accu;
+    }, new Map());
+
+    for (let [key, value] of interestCnt.entries()) {
+      this.interest.push(key);
+      this.interestCnt.push(value);
+    }
   },
 };
 </script>
 
 <style>
 </style>
+

@@ -1,5 +1,9 @@
 <template>
-  <canvas ref="myChart" height="100px"></canvas>
+  <b-container>
+    <b-row class="mt-2 mb-2">
+      <canvas class="m-3" ref="barChart" width="900px" height="250px"></canvas>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -14,14 +18,14 @@ export default {
     }
   },
   async mounted() {
-    await new Chart(this.$refs.myChart, {
+    await new Chart(this.$refs.barChart, {
       type: 'bar',
       data: {
         labels: this.label,
         datasets: [
         {
-            label: '관심 지역',
-            backgroundColor: 'rgba(144,238,144 , 0.9 )',
+            label: '사는 지역',
+            backgroundColor: 'rgba(204,128,144 , 0.6 )',
             data: this.chartData,
         }
         ]
