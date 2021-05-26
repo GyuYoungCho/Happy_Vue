@@ -1,23 +1,25 @@
 <template>
-    <div class="m-5">
-        <b-form>
-            <b-form-group label="이름:" label-for="name">
-                <b-form-input id="name" type="text" placeholder="name" required v-model="item.name"></b-form-input>
-            </b-form-group>
+    <b-container style="min-height:600px">
+        <div class="p-5">
+            <b-form>
+                <b-form-group label="이름:" label-for="name">
+                    <b-form-input id="name" type="text" placeholder="name" required v-model="item.name"></b-form-input>
+                </b-form-group>
 
-            <b-form-group label="제목:" label-for="title">
-                <b-form-input id="title" type="text" placeholder="title" required v-model="item.title"></b-form-input>
-            </b-form-group>
+                <b-form-group label="제목:" label-for="title">
+                    <b-form-input id="title" type="text" placeholder="title" required v-model="item.title"></b-form-input>
+                </b-form-group>
 
-            <b-form-group label="내용" label-for="content">
-                <b-form-textarea id="content" rows="5" placeholder="content" required v-model="item.content"></b-form-textarea>
-            </b-form-group>
+                <b-form-group label="내용" label-for="content">
+                    <b-form-textarea id="content" rows="10" placeholder="content" required v-model="item.content"></b-form-textarea>
+                </b-form-group>
 
-            <b-button @click="onModify" variant="outline-primary">수정</b-button>
-            <b-button type="reset" variant="outline-danger">Reset</b-button>
-            <b-button @click="moveList" variant="outline-success">목록</b-button>
-        </b-form>
-    </div>
+                <b-button @click="onModify" variant="outline-primary">수정</b-button>
+                <b-button type="reset" variant="outline-danger">Reset</b-button>
+                <b-button @click="moveList" variant="outline-success">목록</b-button>
+            </b-form>
+        </div>
+    </b-container>
 </template>
 <style scoped>
 

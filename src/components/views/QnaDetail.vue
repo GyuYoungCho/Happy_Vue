@@ -1,49 +1,49 @@
 <template>
-    <div class="m-5">
-        <h1 style="color:darkblue" class="ml-5 mt-5">글 </h1>
-        <b-form>
-            <b-form-group label="제목:" label-for="title">
-                <b-form-input id="qtitle" type="text" placeholder="title" readonly v-model="qnai.title"></b-form-input>
-            </b-form-group>
+    <b-container style="min-height:600px">
+        <div class="p-5">
+            <h1 style="color:darkblue" class="ml-5 mt-5">글 </h1>
+            <b-form>
+                <b-form-group label="제목:" label-for="title">
+                    <b-form-input id="qtitle" type="text" placeholder="title" readonly v-model="qnai.title"></b-form-input>
+                </b-form-group>
 
-            <b-form-group label="내용" label-for="content">
-                <b-form-textarea id="qcontent" rows="5" placeholder="content" readonly v-model="qnai.content"></b-form-textarea>
-            </b-form-group>
+                <b-form-group label="내용" label-for="content">
+                    <b-form-textarea id="qcontent" rows="5" placeholder="content" readonly v-model="qnai.content"></b-form-textarea>
+                </b-form-group>
 
-            <b-button @click="qnamodOpen" variant="outline-primary">수정</b-button>
-            <b-button @click="del(qnai.num)" variant="outline-danger">삭제</b-button>
-            <b-button @click="moveList" variant="outline-success">목록</b-button>
+                <b-button @click="qnamodOpen" variant="outline-primary">수정</b-button>
+                <b-button @click="del(qnai.num)" variant="outline-danger">삭제</b-button>
+                <b-button @click="moveList" variant="outline-success">목록</b-button>
 
-            <comment-items></comment-items>
-        </b-form>
+                <comment-items></comment-items>
+            </b-form>
 
+            <b-modal ref="qnamod" hide-footer title="글 수정하기">
+                <b-form @submit="qnamodify">
 
-    <b-modal ref="qnamod" hide-footer title="글 수정하기">
-      <b-form @submit="qnamodify">
+                    <b-form-group label="제목:"
+                                label-for="ftitle">
+                    <b-form-input id="ftitle"
+                                    type="text"
+                                    v-model="qnaform.title"
+                                    required
+                                    placeholder="제목">
+                    </b-form-input>
+                    </b-form-group>
 
-        <b-form-group label="제목:"
-                      label-for="ftitle">
-          <b-form-input id="ftitle"
-                        type="text"
-                        v-model="qnaform.title"
-                        required
-                        placeholder="제목">
-          </b-form-input>
-        </b-form-group>
+                    <b-form-group label="글"
+                                label-for="fcontent">
+                    <b-form-textarea id="fcontent"
+                                    :v-model="qnaform.content"
+                                    placeholder="글쓰기..."
+                                    :rows="10"
+                                    :max-rows="20">
+                    </b-form-textarea>
+                    </b-form-group>
 
-        <b-form-group label="글"
-                      label-for="fcontent">
-          <b-form-textarea id="fcontent"
-                           :v-model="qnaform.content"
-                           placeholder="글쓰기..."
-                           :rows="10"
-                           :max-rows="20">
-          </b-form-textarea>
-        </b-form-group>
-
-        <b-btn type="submit" variant="warning" class="float-right">글 수정</b-btn>
-      </b-form>
-    </b-modal>
+                    <b-btn type="submit" variant="warning" class="float-right">글 수정</b-btn>
+                </b-form>
+            </b-modal>
 
 
     <b-modal ref="commod" hide-footer title="댓글 수정하기">
@@ -63,6 +63,7 @@
       </b-form>
     </b-modal>
     </div>
+    </b-container>
 </template>
 <style scoped>
 

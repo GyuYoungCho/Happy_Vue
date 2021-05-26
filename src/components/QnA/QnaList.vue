@@ -1,5 +1,5 @@
 <template>
-    <div class="m-5">
+    <b-container style="min-height:600px">
         <b-table id="my-table" @row-clicked="detail" 
             striped hover :items="qnaitems"
             :per-page="perPage"
@@ -16,7 +16,7 @@
                 aria-controls="my-table">
             </b-pagination>
         </div>
-    </div>
+    </b-container>
 </template>
 
 <style scoped>

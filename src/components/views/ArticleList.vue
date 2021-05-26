@@ -1,19 +1,25 @@
 <template>
-<div>
-  <article-items></article-items>
-  <article-page></article-page>
-</div>
+  <b-container class="bv-example-row">
+    <h3 id="h3" class="ml-5 mt-5">공지사항</h3>
+    <b-row>
+       <b-col cols="12" align="center">
+        <article-list></article-list>
+       </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-import ArticleItems from '../article/ArticleItems.vue'
-import ArticlePage from '../article/ArticlePage.vue'
+import ArticleList from '../article/ArticleList.vue'
 export default {
-  components: { ArticlePage, ArticleItems },
+  components: { ArticleList },
 
 }
 </script>
 
-<style>
-
+<style scoped>
+#h3 {
+  text-shadow: 1px 1px 1px rgb(27, 15, 139);
+  color: rgb(75, 57, 109)
+}
 </style>

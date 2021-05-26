@@ -1,13 +1,16 @@
 <template>
-    <div class="m-5">
-        <b-button @click="moveList" v-if="currentAdmin" variant="outline-success">공지글 작성</b-button>
+    <b-container style="min-height:600px">
+        <div class="text-right pb-4">
+              <b-button @click="moveList" v-if="currentAdmin" variant="outline-primary">공지글 작성</b-button>
+        </div>
+
         <b-table id="my-table" @row-clicked="detail" 
             striped hover :items="items" :fields="fields"
             :per-page="perPage"
             :current-page="currentPage">
         </b-table>
 
-        <div>
+        <div class="pt-4">
             <b-pagination
                 v-model="currentPage"
                 :total-rows="rows"
@@ -15,7 +18,7 @@
                 aria-controls="my-table">
             </b-pagination>
         </div>
-    </div>
+    </b-container>
 </template>
 
 <style scoped>
