@@ -3,9 +3,10 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store/index.js";
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from "bootstrap-vue";
 
 Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons);
 Vue.use(IconsPlugin);
 
 import "bootstrap/dist/css/bootstrap.css";

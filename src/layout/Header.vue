@@ -1,51 +1,55 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="dark">
-    
-    <b-navbar-brand href="/">
-      <img src="@/assets/logo.png" alt="logo image" width="70px"/>
-      <span class="ml-2">Happy House</span>
-    </b-navbar-brand>
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+  <div id="header">
+    <b-container>
+      <b-navbar toggleable="lg" type="dark" variant="dark">
+        
+        <b-navbar-brand href="/">
+          <img src="@/assets/logo.png" alt="logo image" width="70px"/>
+          <span class="ml-2">Happy House</span>
+        </b-navbar-brand>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav v-if="currentUser">
-        <b-nav-item href="/article/list">공지사항</b-nav-item>
-        <b-nav-item href="/qna/list">Q & A</b-nav-item>
-        <b-nav-item href="/apart/search">매매 검색</b-nav-item>
-        <b-nav-item href="/interest/add">관심 지역 등록</b-nav-item>
-      </b-navbar-nav>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav v-if="currentUser">
+            <b-nav-item href="/article/list">공지사항</b-nav-item>
+            <b-nav-item href="/qna/list">Q & A</b-nav-item>
+            <b-nav-item href="/apart/search">매매 검색</b-nav-item>
+            <b-nav-item href="/interest/add">관심 지역 등록</b-nav-item>
+          </b-navbar-nav>
 
-      <b-navbar-nav class="ml-auto">
-        <today-view></today-view>
-      </b-navbar-nav>
+          <b-navbar-nav class="ml-auto">
+            <today-view></today-view>
+          </b-navbar-nav>
 
-      <!-- Right aligned nav items -->
-      <b-navbar-nav v-if="!currentUser" class="ml-auto">
-        <b-nav-item href="/user/regist">회원 가입</b-nav-item>
-        <b-nav-item href="#" v-b-modal.loginModal>로그인</b-nav-item>
-      </b-navbar-nav>      
-        <!-- <b-nav-item @click="myPage">My page</b-nav-item> -->
-      <b-navbar-nav v-if="currentUser" class="ml-auto">
-        <b-nav-item @click="logout">로그아웃</b-nav-item>
-        <b-nav-item @click="myPage" v-if="!currentAdmin">마이페이지</b-nav-item>
-        <b-nav-item @click="adminPage" v-if="currentAdmin">관리자페이지</b-nav-item>
-      </b-navbar-nav>
+          <!-- Right aligned nav items -->
+          <b-navbar-nav v-if="!currentUser" class="ml-auto">
+            <b-nav-item href="/user/regist"><b-icon icon="person-plus"></b-icon>회원 가입</b-nav-item>
+            <b-nav-item href="#" v-b-modal.loginModal><b-icon icon="person-check"></b-icon>로그인</b-nav-item>
+          </b-navbar-nav>      
+            <!-- <b-nav-item @click="myPage">My page</b-nav-item> -->
+          <b-navbar-nav v-if="currentUser" class="ml-auto">
+            <b-nav-item @click="logout"><b-icon icon="power" aria-hidden="true"></b-icon>로그아웃</b-nav-item>
+            <b-nav-item @click="myPage" v-if="!currentAdmin"><b-icon icon="person" aria-hidden="true"></b-icon>마이페이지</b-nav-item>
+            <b-nav-item @click="adminPage" v-if="currentAdmin"><b-icon icon="clipboard-data"></b-icon>관리자페이지</b-nav-item>
+          </b-navbar-nav>
 
-      <b-modal id="loginModal" title="Login" hide-footer>
-        <form>
-          <div class="modal-body">
-            <label for="id">ID:</label>
-            <input type="text" name="id" class="form-control" id="id" v-model="user.id" required placeholder="ID" />
-            <label for="pass">Password:</label>
-            <input type="password" name="pass" class="form-control" id="pass" v-model="user.pass" required placeholder="Enter Password" />
-            <div class="text-right">
-              <b-button type="submit" @click="login" class="btn btn-primary mt-3">Login</b-button>
-            </div>
-          </div>
-        </form>
-      </b-modal>
-    </b-collapse>
-  </b-navbar>
+          <b-modal id="loginModal" title="Login" hide-footer>
+            <form>
+              <div class="modal-body">
+                <label for="id">ID:</label>
+                <input type="text" name="id" class="form-control" id="id" v-model="user.id" required placeholder="ID" />
+                <label for="pass">Password:</label>
+                <input type="password" name="pass" class="form-control" id="pass" v-model="user.pass" required placeholder="Enter Password" />
+                <div class="text-right">
+                  <b-button type="submit" @click="login" class="btn btn-primary mt-3">Login</b-button>
+                </div>
+              </div>
+            </form>
+          </b-modal>
+        </b-collapse>
+      </b-navbar>
+    </b-container>
+  </div>
 </template>
 
 <style scoped>
@@ -53,6 +57,9 @@
   span {
     font-size: 25px;
     font-family: 'Montserrat', sans-serif;
+  }
+  #header {
+    background-color: #343A40;
   }
 </style>
 

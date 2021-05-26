@@ -1,12 +1,22 @@
 <template>
-    <div class="m-4">
+    <div id="notice" class="p-4">
         <h4>공지사항</h4>
         <b-table @row-clicked="detail" striped hover :items="items" :fields="fields" class="mt-4">
         </b-table>
     </div>
 </template>
 <style scoped>
-
+* {
+    color:white;
+}
+b-table {
+    border: 1px solid white;
+}
+#notice {
+    font-size: 17px;
+    font: #fff;
+    border: 5px solid rgba(231, 221, 221, 0.719);
+}
 </style>
 <script>
 import { mapGetters } from 'vuex';
