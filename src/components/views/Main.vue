@@ -68,8 +68,7 @@
           <article-items></article-items>
         </b-col>
         <b-col>
-          <maps></maps>
-          <apt-get></apt-get>
+          <qna-list></qna-list>
         </b-col>
       </b-row>
     </b-container>
@@ -97,14 +96,12 @@
 <script>
 // import Slide1 from "../main/Slide1.vue";
 import ArticleItems from "../article/ArticleItems.vue";
-import AptGet from "../apart/Aptget.vue";
-import Maps from "../apart/Maps.vue";
+import QnaList from '../QnA/QnaList.vue';
 export default{
   name: "Main",
   components: {
     ArticleItems,
-    AptGet,
-    Maps,
+    QnaList,
     // Slide1
   },
 };

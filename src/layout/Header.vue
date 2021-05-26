@@ -15,7 +15,7 @@
         <b-nav-item href="/interest/add">관심 지역 등록</b-nav-item>
       </b-navbar-nav>
 
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav class="ml-auto mr-auto">
         <today-view></today-view>
       </b-navbar-nav>
 

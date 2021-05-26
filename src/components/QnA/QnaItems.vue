@@ -1,32 +1,39 @@
 <template>
-    <div class="m-5">
-        <b-table @row-clicked="detail" striped hover :items="items">
+  <div class="m-4">
+        <h4>QnA</h4>
+        <b-table @row-clicked="detail" striped hover :items="qnaitems" :fields="fields" class="mt-4">
         </b-table>
     </div>
 </template>
-<style scoped>
 
-</style>
 <script>
 import { mapGetters } from 'vuex';
 
 export default {
     data() {
-        return {};
+        return {
+            fields: ["num", "name", "title", "date", "lookup", "commentcount"],
+        };
     },
-    
     computed: {
-        ...mapGetters(["items"]),
+        ...mapGetters(["qnaitems"]),
+        rows() {
+            return this.qnaitems.length
+        }
     },
     created() {
-        this.$store.dispatch("setItems");
+        this.$store.dispatch("setqnaItems");
     },
     methods: {
         detail(item) {
             this.$router.push({
-                path: "/article/list/" + item.num,
+                path: "/qna/detail/" + item.num,
             });
         },
     },
 }
 </script>
+
+<style>
+
+</style>

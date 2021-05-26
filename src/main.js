@@ -11,6 +11,13 @@ Vue.use(IconsPlugin);
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
+import dayjs from "dayjs";
+Vue.filter("formatDate", (value) => {
+  if (value) {
+    return dayjs(String(value)).format("YYYY-MM-DD");
+  }
+});
+
 new Vue({
   router,
   store,

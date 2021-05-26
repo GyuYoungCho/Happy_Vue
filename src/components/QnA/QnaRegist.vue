@@ -38,25 +38,26 @@ export default {
     methods: {
         moveList() {
             this.$router.push({
-                path: "/article/list",
+                path: "/qna/list",
             })
         },
         onSubmit() {
             if(!this.currentUser) return;
             let user = JSON.parse(storage.getItem('loginUser'))
             this.item.name = user.name
+            this.item.id = user.id
             
             rest.axios({
-                url: "/article",
+                url: "/qna",
                 method: "post",
                 data: this.item,
             }).then((res) => {
                 if(res.data === "success") {
-                    alert("게시글 등록 성공");
+                    alert("QnA가 등록되었습니다");
                     this.moveList();
                 }
             }).catch((err) => {
-                alert("게시글 등록 실패");
+                alert("등록 실패");
                 console.log(err);
             });
         }

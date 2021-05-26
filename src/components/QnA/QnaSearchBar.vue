@@ -1,60 +1,52 @@
 <template>
   <b-container>
-    <b-row class="mb-4">
-      <b-col cols="6">
-        <input type="text" v-model="filter" class="form-control" id="input-text" placeholder="검색어를 입력">
+    <b-row class="mb-4 mt-5">
+      <b-col cols="11">
+        <b-form inline>
+        <input type="text" :v-model="keyword" class="form-control" id="input-text" placeholder="검색어를 입력">
+              <b-button variant="outline-primary" @click="sendkeyword">검색</b-button>
+              <b-button v-if="currentUser" variant="outline-success" class = "ml-auto" @click="move">글 작성</b-button>
+
+        </b-form>
       </b-col>
-      <b-col cols="6">
-        <b-form-group>
-          <b-form-select :options="pageOptions" v-model="perPage" />
-        </b-form-group>
-      </b-col>
+
     </b-row>
   </b-container>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import {mapActions } from 'vuex';
+
+const storage = window.sessionStorage;
 
 export default {
   name: 'SearchBar',
   data() {
     return {
-      dong: '',
-      aptName:'',
-      selected:'',
-      arealist : ["시","서울특별시"],
-      selectedarea : '시',
-      selectedGu : '구',
-      selectedDong : '동',
+      keyword : '',
     };
   },
   computed:{
-    ...mapGetters(["silist","donglist"]),
-
+    
+    currentUser() {
+      if (!storage.getItem('loginUser')){
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
   methods: {
-    ...mapActions(['getSiList','getDongList','getNameAptList','getDongAptList']),
+    ...mapActions(['getqnaList']),
     sendkeyword() {
-      
-      if (this.selected=="dong") 
-        {
-          this.getDongAptList(this.selectedDong);
-          return;
-        }
-      if (this.selected=="aptName") 
-        {
-          this.getNameAptList(this.aptName);
-          return;
-        }
+      this.getqnaList(this.keyword);
+          
     },
-    getGu(){
-      this.getSiList(this.selectedarea);
-      
+    move() {
+        this.$router.push({
+            path: "/qna/regist",
+        })
     },
-    getDong(){
-      this.getDongList(this.selectedGu);
-    }
 
   },
 };

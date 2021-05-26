@@ -1,9 +1,11 @@
 <template>
     <div class="m-5">
         <b-table id="my-table" @row-clicked="detail" 
-            striped hover :items="items"
+            striped hover :items="qnaitems"
             :per-page="perPage"
-            :current-page="currentPage">
+            :current-page="currentPage"
+            :fields="fields"
+            >
         </b-table>
         
         <div>
@@ -31,21 +33,22 @@ export default {
         return {
             perPage: 3,
             currentPage: 1,
+            fields: ["num", "name", "title", "date", "lookup", "commentcount"],
         };
     },
     computed: {
-        ...mapGetters(["items"]),
+        ...mapGetters(["qnaitems"]),
         rows() {
-            return this.items.length
+            return this.qnaitems.length
         }
     },
     created() {
-        this.$store.dispatch("setItems");
+        this.$store.dispatch("setqnaItems");
     },
     methods: {
         detail(item) {
             this.$router.push({
-                path: "/article/list/" + item.num,
+                path: "/qna/detail/" + item.num,
             });
         },
     },
