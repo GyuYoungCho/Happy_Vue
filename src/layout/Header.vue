@@ -14,7 +14,8 @@
             <b-nav-item href="/article/list">공지사항</b-nav-item>
             <b-nav-item href="/qna/list">Q & A</b-nav-item>
             <b-nav-item href="/apart/search">매매 검색</b-nav-item>
-            <b-nav-item href="/interest/add">관심 지역 등록</b-nav-item>
+            <b-nav-item href="/interest/add">관심 지역</b-nav-item>
+            <b-nav-item href="/interest/parkinglist">주차 정보</b-nav-item>
           </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto mr-auto">

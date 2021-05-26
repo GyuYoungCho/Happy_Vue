@@ -1,7 +1,7 @@
 <template>
-  <div>
-  <div id="map" style="width: 100%; height: 500px; margin: auto;"></div>
-</div>
+    <div>
+        <div id="map" style="width: 100%; height: 500px; margin: auto;"></div>
+    </div>
 </template>
 
 <script>

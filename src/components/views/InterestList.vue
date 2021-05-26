@@ -1,16 +1,11 @@
 <template>
   <b-container class="bv-example-row">
-    <b-row>
-      <b-col>
-        <h2>관심 지역 주차 정보</h2>
-      </b-col>
-    </b-row>
+    <h3 id="h3" class="ml-5 mt-5">관심 지역 주차 정보</h3>
     <b-row>
       <b-col cols="3" align="left">
         <interest-region-list />
-        <b-button></b-button>
       </b-col>
-      <b-col cols="9">
+      <b-col cols="9" class="pt-4 pb-4">
         <maps></maps>
       </b-col>
     </b-row>

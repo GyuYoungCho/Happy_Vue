@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 #h3 {
-  text-shadow: 1px 1px 1px rgb(27, 15, 139);
-  color: rgb(75, 57, 109)
+  text-shadow: 1px 1px 1px rgb(4, 61, 7);
+  color: rgb(59, 109, 57)
 }
 </style>

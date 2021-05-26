@@ -1,7 +1,7 @@
 <template>
     <b-container style="min-height:600px">
         <div class="text-right pb-4">
-              <b-button @click="moveList" v-if="currentAdmin" variant="outline-primary">공지글 작성</b-button>
+            <b-button @click="moveList" v-if="currentAdmin" variant="outline-primary">공지글 작성</b-button>
         </div>
 
         <b-table id="my-table" @row-clicked="detail" 

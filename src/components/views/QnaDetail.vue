@@ -1,7 +1,6 @@
 <template>
     <b-container style="min-height:600px">
         <div class="p-5">
-            <h1 style="color:darkblue" class="ml-5 mt-5">글 </h1>
             <b-form>
                 <b-form-group label="제목:" label-for="title">
                     <b-form-input id="qtitle" type="text" placeholder="title" readonly v-model="qnai.title"></b-form-input>
@@ -13,7 +12,7 @@
 
                 <b-button @click="qnamodOpen" variant="outline-primary">수정</b-button>
                 <b-button @click="del(qnai.num)" variant="outline-danger">삭제</b-button>
-                <b-button @click="moveList" variant="outline-success">목록</b-button>
+                <b-button @click="moveList" vari ant="outline-success">목록</b-button>
 
                 <comment-items></comment-items>
             </b-form>

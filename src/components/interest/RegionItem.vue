@@ -1,18 +1,19 @@
 <template>
-    <b-row
-    class="m-2"
-    @click="chooseRegion"
-    @mouseover="colorChange(true)"
-    @mouseout="colorChange(false)"
-    :class="{ 'mouse-over-bgcolor': isColor }"
-  >
-    <b-media>
-    <b-media-body>
-        <h4 style="color:#00BFFF" >{{this.region.gu}}</h4> 
-    </b-media-body>
+  <div>
+    <b-row style="display: grid;"
+      class="pl-4 pr-4 pt-2 pb-1"
+      @click="chooseRegion"
+      @mouseover="colorChange(true)"
+      @mouseout="colorChange(false)"
+      :class="{ 'mouse-over-bgcolor': isColor }">
+      <b-media class="text-center">
+        <b-media-body>
+          <h4 style="color:#0D5917;">{{this.region.gu}}</h4> 
+        </b-media-body>
       </b-media>
-      <hr>
-  </b-row>
+    </b-row>
+    <hr>
+  </div>
 </template>
 <style scoped>
 
@@ -45,6 +46,13 @@ export default {
 <style scoped>
 
 .mouse-over-bgcolor {
-  background-color: lightblue;
+  background-color: rgb(212, 207, 207);
+}
+hr {
+  border: solid 1px;
+  background-color: rgb(67, 74, 167);
+}
+#row {
+
 }
 </style>

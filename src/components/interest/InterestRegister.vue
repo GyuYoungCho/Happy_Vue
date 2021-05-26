@@ -1,11 +1,6 @@
 <template>
   <b-container>
-    <div class="text-center mt-5 sm-4">
-							<h1 class="h2">관심지역 등록</h1>
-							<p class="lead">
-								{{currentUser.name }}님의 관심지역을 등록합니다.
-							</p>
-						</div>
+    <h3 id="h3" class="ml-5 mt-5">관심지역 등록</h3>
     <b-row>
       <b-col cols="3">
         <interest-region-list></interest-region-list>
@@ -45,7 +40,7 @@ export default {
   data(){
     return {
       item : {},
-      arealist : ["시","서울특별시"],
+      arealist : ["시","서울특별시","경기도","인천광역시","대구광역시","광주광역시","대전광역시","울산광역시","세종시","강원도","충청도","전라도","경상도","제주도"],
       selectedarea : '시',
     }
   },
@@ -92,10 +87,10 @@ export default {
             method: "delete",
         }).then((res) => {
             if (res.data === "success") {
-                alert("글 삭제 성공");
+                alert("관심 지역 삭제 성공");
             }
         }).catch((err)=>{
-            alert("글 삭제 실패")
+            alert("삭제 실패")
             console.log(err);
         });
     }
@@ -103,6 +98,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+#h3 {
+  text-shadow: 1px 1px 1px rgb(4, 61, 7);
+  color: rgb(59, 109, 57)
+}
 </style>
