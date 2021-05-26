@@ -4,7 +4,7 @@ import rest from "@/js/httpCommon.js";
 
 Vue.use(Vuex);
 
-const qnaStore = {
+const comStore = {
   state: {
     comitems: [],
     comi: {},
@@ -26,14 +26,14 @@ const qnaStore = {
     },
   },
   actions: {
-    setcomItems(store) {
+    setcomItems({ commit }, qna_num) {
       rest
         .axios({
           method: "get",
-          url: "/qna",
+          url: "/comments/" + qna_num,
         })
         .then((res) => {
-          store.commit("set_com_Items", res.data);
+          commit("set_com_Items", res.data);
         })
         .catch((err) => {
           alert("게시판 로딩 실패");
@@ -59,4 +59,4 @@ const qnaStore = {
   modules: {},
 };
 
-export default qnaStore;
+export default comStore;

@@ -7,14 +7,14 @@ Vue.use(Vuex);
 const qnaStore = {
   state: {
     qnaitems: [],
-    qnait: {},
+    qnai: {},
   },
   getters: {
     qnaitems(state) {
       return state.qnaitems;
     },
-    qnait(state) {
-      return state.qnait;
+    qnai(state) {
+      return state.qnai;
     },
   },
   mutations: {
@@ -57,11 +57,11 @@ const qnaStore = {
         });
     },
 
-    getqna({ commit }, num) {
+    setqnaItem({ commit }, num) {
       rest
         .axios({
           method: "get",
-          url: "/qna/selelct/" + num,
+          url: "/qna/select/" + num,
         })
         .then((res) => {
           commit("set_qna_Item", res.data);
