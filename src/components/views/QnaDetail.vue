@@ -32,7 +32,7 @@
                                     <span>  {{ cmt.comment}}</span>
                                 </b-col>
                                 <b-col cols="2">
-                                    <span>  {{ cmt.date |formatDate}}</span>
+                                    <span>  {{ ago(cmt.date)}}</span>
                                 </b-col>
                                 <!-- <b-col v-if="user && user.id == comi.id" cols="2"> -->
                                 <b-button-group v-if="user.id==cmt.id" class="float-right" size="sm">
