@@ -37,30 +37,27 @@ const adminStore = {
     },
 
     updateHouseDeal() {
-      // rest
-      //   .axios({
-      //     url: "/house",
-      //     method: "delete",
-      //   })
-      //   .then((res) => {
-      //     res;
-      //     alert("거래 정보 업데이트 시작");
-      //   })
-      //   .catch((err) => {
-      //     alert("오류");
-      //     console.log(err);
-      //   });
+      rest
+        .axios({
+          url: "/house",
+          method: "delete",
+        })
+        .then((res) => {
+          res;
+          alert("거래 정보 업데이트 시작");
+        })
+        .catch((err) => {
+          alert("오류");
+          console.log(err);
+        });
 
       const res = bcode;
 
       let dcode = [];
       res.forEach((item) => {
         let str = new String(item["법정동코드"]);
-        let chars = str.split("");
 
-        if (!(chars[5] == "0" && chars[6] == "0" && chars[7] == "0" && chars[8] == "0" && chars[9] == "0")) {
-          dcode.push(str.substr(5, 5));
-        }
+        dcode.push(str.substr(0, 5));
       });
 
       dcode = new Set(dcode);
@@ -70,30 +67,30 @@ const adminStore = {
       var today = new Date();
 
       let dateParams = [];
-      for (var i = 0; i < 12; i++) {
+      for (var i = 0; i < 6; i++) {
         today.setMonth(today.getMonth() - 1);
         dateParams.push(dayjs(today).format("YYYYMM"));
       }
-      // let flag = false;
-      // dcode.forEach((code) => {
-      //   dateParams.forEach((dat) => {
-      //     rest
-      //       .axios({
-      //         url: "/house/aptdeal/" + code + "/" + dat,
-      //         method: "get",
-      //       })
-      //       .then((res) => {
-      //         res;
-      //         return;
-      //       })
-      //       .catch((err) => {
-      //         flag = true;
-      //         console.log(err);
-      //         return false;
-      //       });
-      //   });
-      //   if (flag) return false;
-      // });
+      let flag = false;
+      dcode.forEach((code) => {
+        dateParams.forEach((dat) => {
+          rest
+            .axios({
+              url: "/house/aptdeal/" + code + "/" + dat,
+              method: "get",
+            })
+            .then((res) => {
+              res;
+              return;
+            })
+            .catch((err) => {
+              flag = true;
+              console.log(err);
+              return false;
+            });
+        });
+        if (flag) return false;
+      });
     },
   },
   modules: {},

@@ -19,6 +19,15 @@
       </slide>
     </carousel>
     <Users />
+    <b-button v-b-modal.my-modal variant="warning">DB 업데이트</b-button>
+
+    <b-modal id="my-modal" title="Using Component Methods">
+      <div class="d-block text-center">
+        <h3>Hello From My Modal!</h3>
+      </div>
+      <b-button class="mt-2" variant="outline-warning" block @click="start">Update!</b-button>
+      <b-button class="mt-3" variant="outline-secondary" block @click="hideModal">Close Me</b-button>
+    </b-modal>
   </div>
 </template>
 
@@ -30,7 +39,7 @@ import RegionChart from "./RegionChart";
 import InterestChart from "./InterestChart";
 import Users from "./Users";
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Admin",
@@ -143,6 +152,18 @@ export default {
       this.interestCnt.push(value);
     }
   },
+  methods: {
+    ...mapActions(['updateHouseDeal']),
+      showModal() {
+        this.$refs['my-modal'].show()
+      },
+      hideModal() {
+        this.$refs['my-modal'].hide()
+      },
+      start(){
+        this.updateHouseDeal()
+      }
+  }
 };
 </script>
 
