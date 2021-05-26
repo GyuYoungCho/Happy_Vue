@@ -9,20 +9,16 @@
                 <b-form-group label="내용" label-for="content">
                     <b-form-textarea id="qcontent" rows="5" placeholder="content" readonly v-model="qnai.content"></b-form-textarea>
                 </b-form-group>
+                
 
-                <b-button @click="qnamodOpen" variant="outline-primary">수정</b-button>
-                <b-button @click="del(qnai.num)" variant="outline-danger">삭제</b-button>
-                <b-button @click="moveList" vari ant="outline-success">목록</b-button>
-
-                <b-form-group label="내용" label-for="content">
-                    <b-form-textarea id="qcontent" rows="5" placeholder="content" readonly v-model="qnai.content"></b-form-textarea>
-                </b-form-group>
                 <b-form inline>
                     <b-col v-if="user.id==qnai.id" class="ml-auto">
                         <b-button @click="qnamodOpen()" variant="outline-primary">수정</b-button>
                         <b-button v-b-modal.qna-del-modal variant="outline-danger">삭제</b-button>
                     </b-col>
-                    <b-button @click="moveList" variant="outline-success">목록</b-button>
+                    <b-col>
+                    <b-button class="float-right" @click="moveList" variant="outline-success">목록</b-button>
+                    </b-col>
                 </b-form>
 
                 <b-card no-body class="mt-5">
@@ -39,7 +35,7 @@
                                     <span>  {{ cmt.date |formatDate}}</span>
                                 </b-col>
                                 <!-- <b-col v-if="user && user.id == comi.id" cols="2"> -->
-                                <b-button-group class="float-right" size="sm">
+                                <b-button-group v-if="user.id==cmt.id" class="float-right" size="sm">
                                     <b-btn variant="warning" @click="commodOpen(cmt)"><b-icon icon="pencil"></b-icon></b-btn>
                                     <b-btn variant="danger" @click="comdel(cmt)"><b-icon icon="trash"></b-icon></b-btn>
                                 </b-button-group>
@@ -131,7 +127,7 @@ export default {
     created() {
         this.user = JSON.parse(storage.getItem("loginUser"));
         this.update();
-
+        this.setcomItems(this.$route.params.num);
     },
     computed: {
         ...mapGetters(["qnai","comitems"]),
@@ -144,7 +140,7 @@ export default {
         },
     },
     methods: {
-        ...mapActions(["setqnaItem"]),
+        ...mapActions(["setqnaItem","setcomItems"]),
         refresh() {
             this.$router.go();
         },
