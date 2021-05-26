@@ -8,6 +8,7 @@ import apartStore from "@/store/modules/apartStore.js";
 import articleStore from "@/store/modules/articleStore.js";
 import adminStore from "@/store/modules/adminStore.js";
 import interestStore from "@/store/modules/interestStore.js";
+import qnaStore from "@/store/modules/QnAStore.js";
 
 export default new Vuex.Store({
   modules: {
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     articleStore,
     adminStore,
     interestStore,
+    qnaStore,
   },
   plugins: [createPersistedState()],
 });

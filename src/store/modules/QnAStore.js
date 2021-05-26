@@ -4,53 +4,70 @@ import rest from "@/js/httpCommon.js";
 
 Vue.use(Vuex);
 
-const articleStore = {
+const qnaStore = {
   state: {
-    items: [],
-    item: {},
+    qnaitems: [],
+    qnait: {},
   },
   getters: {
-    items(state) {
-      return state.items;
+    qnaitems(state) {
+      return state.qnaitems;
     },
-    item(state) {
-      return state.item;
+    qnait(state) {
+      return state.qnait;
     },
   },
   mutations: {
-    setItems(state, payload) {
-      state.items = payload;
+    set_qna_Items(state, payload) {
+      state.qnaitems = payload;
     },
-    setItem(state, payload) {
-      state.item = payload;
+
+    set_qna_Item(state, payload) {
+      state.qnai = payload;
     },
   },
   actions: {
-    setItems(store) {
+    setqnaItems(store) {
       rest
         .axios({
           method: "get",
-          url: "/article",
+          url: "/qna",
         })
         .then((res) => {
-          store.commit("setItems", res.data);
+          store.commit("set_qna_Items", res.data);
         })
         .catch((err) => {
           alert("게시판 로딩 실패");
           console.log(err);
         });
     },
-    setItem(store, num) {
+
+    getqnaList({ commit }, keyword) {
       rest
         .axios({
           method: "get",
-          url: "/article/" + num,
+          url: "/qna/search/" + keyword,
         })
         .then((res) => {
-          store.commit("setItem", res.data);
+          commit("set_qna_Items", res.data);
         })
         .catch((err) => {
-          alert("상세화면 로딩 실패");
+          alert("게시판 로딩 실패");
+          console.log(err);
+        });
+    },
+
+    getqna({ commit }, num) {
+      rest
+        .axios({
+          method: "get",
+          url: "/qna/selelct/" + num,
+        })
+        .then((res) => {
+          commit("set_qna_Item", res.data);
+        })
+        .catch((err) => {
+          alert("게시판 로딩 실패");
           console.log(err);
         });
     },
@@ -58,4 +75,4 @@ const articleStore = {
   modules: {},
 };
 
-export default articleStore;
+export default qnaStore;

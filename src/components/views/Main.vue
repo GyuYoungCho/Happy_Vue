@@ -70,7 +70,7 @@
           <article-items></article-items>
         </b-col>
         <b-col>
-          <qna-items></qna-items>
+          <qna-list></qna-list>
         </b-col>
       </b-row>
     </b-container>
@@ -100,12 +100,12 @@
 
 <script>
 import ArticleItems from "../article/ArticleItems.vue";
-import QnaItems from "../QnA/QnaItems";
+import QnaList from '../QnA/QnaList.vue';
 export default{
   name: "Main",
   components: {
     ArticleItems,
-    QnaItems,
+    QnaList,
     // Slide1
   },
   methods: {

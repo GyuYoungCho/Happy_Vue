@@ -13,6 +13,9 @@ import UserPage from "@/components/user/UserPage.vue";
 import UserModify from "@/components/user/UserModify.vue";
 
 import QnaView from "@/components/views/QnaView.vue";
+import QnaDetail from "@/components/views/QnaDetail.vue";
+import QnaRegist from "@/components/QnA/QnaRegist.vue";
+
 import InterestList from "@/components/views/InterestList.vue";
 import InterestRegister from "@/components/interest/InterestRegister.vue";
 
@@ -82,9 +85,19 @@ const routes = [
     component: AdminPage,
   },
   {
+    path: "/qna/regist",
+    name: "QnaRegist",
+    component: QnaRegist,
+  },
+  {
     path: "/qna/list",
     name: "QnaView",
     component: QnaView,
+  },
+  {
+    path: "/qna/detail",
+    name: "QnaDetail",
+    component: QnaDetail,
   },
 ];
 

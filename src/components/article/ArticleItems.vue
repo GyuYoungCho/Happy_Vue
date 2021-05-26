@@ -2,6 +2,10 @@
     <div id="notice" class="p-4">
         <h4>공지사항</h4>
         <b-table @row-clicked="detail" striped hover :items="items" :fields="fields" class="mt-4">
+        <template #cell(fdate)="data">
+            {{ data.item.date| formatDate }}
+        </template>
+        
         </b-table>
     </div>
 </template>
@@ -23,7 +27,7 @@ import { mapGetters } from 'vuex';
 
 export default {
     data() {
-        return {fields: ["num", "name", "title", "date"],};
+        return {fields: ["num", "name", "title", { key: 'fdate', label: 'date' }],};
     },
     
     computed: {

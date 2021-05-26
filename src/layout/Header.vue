@@ -17,9 +17,9 @@
             <b-nav-item href="/interest/add">관심 지역 등록</b-nav-item>
           </b-navbar-nav>
 
-          <b-navbar-nav class="ml-auto">
-            <today-view></today-view>
-          </b-navbar-nav>
+      <b-navbar-nav class="ml-auto mr-auto">
+        <today-view></today-view>
+      </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav v-if="!currentUser" class="ml-auto">
