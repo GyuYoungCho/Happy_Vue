@@ -52,7 +52,4 @@ hr {
   border: solid 1px;
   background-color: rgb(67, 74, 167);
 }
-#row {
-
-}
 </style>
