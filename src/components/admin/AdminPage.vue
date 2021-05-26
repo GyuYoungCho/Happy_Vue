@@ -1,5 +1,6 @@
 <template>
-  <div id="admin" class="m-5">
+  <b-container style="min-height:600px">
+  <div id="admin" class="text-right pt-4 pb-4">
     <carousel :per-page="1" :autoplay="true" :loop="true" :navigationEnabled="true">
       <slide style="width:100px">
         <h4 class="text-center">가입자 추이</h4>
@@ -18,8 +19,8 @@
         <interest-chart :label="interest" :chart-data="interestCnt"></interest-chart>
       </slide>
     </carousel>
-    <Users />
     <b-button v-b-modal.my-modal variant="warning">DB 업데이트</b-button>
+    <Users />
 
     <b-modal id="my-modal" title="Using Component Methods">
       <div class="d-block text-center">
@@ -29,6 +30,7 @@
       <b-button class="mt-3" variant="outline-secondary" block @click="hideModal">Close Me</b-button>
     </b-modal>
   </div>
+  </b-container>
 </template>
 
 <script>
