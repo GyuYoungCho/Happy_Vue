@@ -1,5 +1,5 @@
 <template>
-    <div id="notice" class="p-4">
+    <div id="notice" class="pt-4 p-1">
         <h4>공지사항</h4>
         <b-table @row-clicked="detail" striped hover :items="items" :fields="fields" class="mt-4">
         <template #cell(fdate)="data">

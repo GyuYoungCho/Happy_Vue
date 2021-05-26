@@ -64,16 +64,16 @@
         <b-icon-play @click="searchHouse"></b-icon-play><b-icon-play @click="searchHouse"></b-icon-play><b-icon-play @click="searchHouse"></b-icon-play>
       </div>
     </b-container>
-    <b-container id="article" class="p-4">
+    <b-container id="article" class="p-4 mb-4">
       <b-row class="text-center">
         <b-col>
           <article-items></article-items>
         </b-col>
         <b-col>
-          <qna-list></qna-list>
+          <qna-items></qna-items>
         </b-col>
       </b-row>
-    </b-container>
+    </b-container><br><br>
   </div>
 </template>
 
@@ -100,12 +100,12 @@
 
 <script>
 import ArticleItems from "../article/ArticleItems.vue";
-import QnaList from '../QnA/QnaList.vue';
+import QnaItems from '../QnA/QnaItems.vue';
 export default{
   name: "Main",
   components: {
     ArticleItems,
-    QnaList,
+    QnaItems,
     // Slide1
   },
   methods: {
