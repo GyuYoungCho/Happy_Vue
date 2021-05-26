@@ -120,6 +120,7 @@ export default {
       });
       if (this.$route.name=='Main') {
         this.redirect();
+        this.$router.push("/qna/list")
       } else {
         this.moveMain();
       }
