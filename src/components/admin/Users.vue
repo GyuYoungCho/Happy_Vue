@@ -1,7 +1,7 @@
 <template>
   <div class="m-5">
     <h3>User Information</h3>
-    <b-table hover :items="totalUsers"
+    <b-table hover :items="totalUsers" :fields="fields"
       :per-page="perPage"
       :current-page="currentPage">
     </b-table>
@@ -29,6 +29,7 @@ import { mapGetters } from 'vuex';
 export default {
     data() {
         return {
+          fields: ["id", "name", "email", "address", "gender", "phone"],
           perPage: 5,
           currentPage: 1,
         };

@@ -1,6 +1,10 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
-    <b-navbar-brand href="/">Happy House</b-navbar-brand>
+    
+    <b-navbar-brand href="/">
+      <img src="@/assets/logo.png" alt="logo image" width="70px"/>
+      <span class="ml-2">Happy House</span>
+    </b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
@@ -36,6 +40,14 @@
     </b-collapse>
   </b-navbar>
 </template>
+
+<style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  span {
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+  }
+</style>
 
 <script>
 import rest from "@/js/httpCommon.js";
@@ -118,6 +130,4 @@ export default {
     }
   },
 }
-
-
 </script>
