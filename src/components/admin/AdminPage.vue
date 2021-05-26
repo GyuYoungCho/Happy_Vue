@@ -1,6 +1,6 @@
 <template>
   <div id="admin" class="m-5">
-    <carousel :per-page="1" :mouse-drag="true">
+    <carousel :per-page="1" :autoplay="true" :loop="true" :navigationEnabled="true">
       <slide style="width:100px">
         <h4 class="text-center">가입자 추이</h4>
         <sign-up-chart :label="joindate" :chart-data="totalUser"></sign-up-chart>
@@ -54,11 +54,6 @@ export default {
   },
   data() {
     return {
-      charts: [
-        '<div class="slide">asdf</div>',
-        '<div class="slide">Slide 2</div>',
-        '<div class="slide">Slide 3</div>',
-      ],
       joindate : 
       ["January",
         "February",
