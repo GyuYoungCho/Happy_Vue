@@ -95,7 +95,7 @@ const routes = [
     component: QnaView,
   },
   {
-    path: "/qna/detail",
+    path: "/qna/detail/:num",
     name: "QnaDetail",
     component: QnaDetail,
   },

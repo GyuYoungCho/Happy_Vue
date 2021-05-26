@@ -1,6 +1,6 @@
 <template>
     <div class="m-5">
-        <b-table @row-clicked="detail" striped hover :items="comitems">
+        <b-table striped hover :items="comitems">
         </b-table>
     </div>
 </template>
@@ -8,7 +8,7 @@
 
 </style>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data() {
@@ -16,10 +16,13 @@ export default {
     },
     
     computed: {
-        ...mapGetters(["comitems"]),
+        ...mapGetters(["qnai", "comitems"]),
     },
     created() {
-        this.$store.dispatch("setcomItems");
+        this.setcomItems(this.$route.params.num);
     },
+    methods : {
+        ...mapActions(["setcomItems"]),
+    }
 }
 </script>

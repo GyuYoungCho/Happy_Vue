@@ -1,5 +1,6 @@
 <template>
     <div class="m-5">
+        <h1 style="color:darkblue" class="ml-5 mt-5">글 </h1>
         <b-form>
             <b-form-group label="제목:" label-for="title">
                 <b-form-input id="qtitle" type="text" placeholder="title" readonly v-model="qnai.title"></b-form-input>
@@ -9,16 +10,11 @@
                 <b-form-textarea id="qcontent" rows="5" placeholder="content" readonly v-model="qnai.content"></b-form-textarea>
             </b-form-group>
 
-            <b-button @click="modify" variant="outline-primary">수정</b-button>
-            <b-button @click="del(item.num)" variant="outline-danger">삭제</b-button>
+            <b-button @click="qnamodOpen" variant="outline-primary">수정</b-button>
+            <b-button @click="del(qnai.num)" variant="outline-danger">삭제</b-button>
             <b-button @click="moveList" variant="outline-success">목록</b-button>
 
-            <b-form-textarea id="formcontent"
-                           v-model="form.content"
-                           placeholder="재미있는 글"
-                           :rows="10"
-                           :max-rows="20">
-             </b-form-textarea>
+            <comment-items></comment-items>
         </b-form>
 
 
@@ -29,7 +25,7 @@
                       label-for="ftitle">
           <b-form-input id="ftitle"
                         type="text"
-                        v-model="qnai.title"
+                        v-model="qnaform.title"
                         required
                         placeholder="제목">
           </b-form-input>
@@ -38,7 +34,7 @@
         <b-form-group label="글"
                       label-for="fcontent">
           <b-form-textarea id="fcontent"
-                           v-model="qnai.content"
+                           :v-model="qnaform.content"
                            placeholder="글쓰기..."
                            :rows="10"
                            :max-rows="20">
@@ -74,32 +70,44 @@
 <script>
 import rest from "@/js/httpCommon.js";
 import { mapActions, mapGetters } from 'vuex';
+import CommentItems from '../QnA/CommentItems.vue';
 const storage = window.sessionStorage;
 
 export default {
     data() {
-        return {};
+        return {
+            qnaform : {},
+            comform : {},
+        };
+    },
+    components : {
+        CommentItems,
     },
     created() {
         this.user = JSON.parse(storage.getItem("loginUser"));
-        let num = this.$route.params.num;
-        this.$store.dispatch("setqnaItem", num);
+        this.update();
     },
     computed: {
         ...mapGetters(["qnai", "comi","comitems"]),
     },
     methods: {
-        ...mapActions(["setqnaitem"]),
+        ...mapActions(["setqnaItem"]),
         moveList() {
             this.$router.push({
-                path: "/article/list",
+                path: "/qna/list",
             })
         },
+
+        update(){
+            let num = this.$route.params.num;
+            this.setqnaItem(num);
+        },
+
         qnamodify(num) {
             rest.axios({
                 url: "/qna/" + num,
                 method: "put",
-                data: this.item,
+                data: this.qnaform,
             }).then((res) => {
                 console.log(res);
                 alert("게시글 수정 성공");
@@ -136,7 +144,22 @@ export default {
                 alert("글 삭제 실패")
                 console.log(err);
             });
-        }
+        },
+
+        qnamodOpen() {
+            this.qnaform.title = this.qnai.title;
+            console.log(this.qnai.title)
+            console.log(this.qnaform.title)
+            this.qnaform.content = this.qnai.content;
+            this.$refs.qnamod.show();
+        },
+
+        commodOpen() {
+            this.comform.title = this.comi.title;
+            this.comform.content = this.comi.content;
+            this.$refs.commod.show();
+        },
+
     },
 
 }
