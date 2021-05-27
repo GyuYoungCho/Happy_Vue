@@ -22,9 +22,9 @@
     <b-button v-b-modal.my-modal variant="warning">DB 업데이트</b-button>
     <Users />
 
-    <b-modal id="my-modal" title="Using Component Methods">
+    <b-modal id="my-modal" title="Update DB">
       <div class="d-block text-center">
-        <h3>Hello From My Modal!</h3>
+        <h3>최신 거래정보 업데이트!</h3>
       </div>
       <b-button class="mt-2" variant="outline-warning" block @click="start">Update!</b-button>
       <b-button class="mt-3" variant="outline-secondary" block @click="hideModal">Close Me</b-button>

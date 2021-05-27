@@ -36,7 +36,7 @@ export default {
     data() {
         return {
             fields: ["num", "name", "title", "date"],
-            perPage: 3,
+            perPage: 5,
             currentPage: 1,
         };
     },
