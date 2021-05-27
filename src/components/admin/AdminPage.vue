@@ -159,6 +159,7 @@ export default {
       },
       start(){
         this.updateHouseDeal()
+        this.$router.go();
       }
   }
 };

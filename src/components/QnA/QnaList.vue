@@ -33,7 +33,7 @@ export default {
         return {
             perPage: 3,
             currentPage: 1,
-            fields: ["num", "name", "title", "date"],
+            fields: ["num", "name", "title", "date", "commentcount"],
         };
     },
     computed: {
